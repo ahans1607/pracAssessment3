@@ -12,15 +12,42 @@
         pause for 800ms
         print 'beep'
         pause for 400ms
-
-    There are no mocha tests for this code.
-    Run the following two lines beneath the function
-    to see if your code demonstrates the expected behavior.
-   
 */
 
-function r2d2Speaks(code) {
-    
+// function r2d2Speaks(code) {
+//     for (let i = 0; i < code.length; i++){
+//         let thing = code[i]
+//             if (thing === 0){
+//                 console.log("beep")
+//                 setTimeout(() => {}, 400);
+//             }
+
+//             if (thing === 0){
+//                 console.log("boop")
+//                 setTimeout(() => {}, 800);
+//             }
+//     }
+// }
+
+function r2d2Speaks(code){
+    if (!code.length){
+        return;
+    }
+
+    let first = code.shift()
+
+    if (first === 0){
+     console.log("beep")
+     setTimeout(() => {}, 400);
+    }
+        
+    if (first === 1){
+    console.log("boop")
+    setTimeout(() => {}, 800);
+    }
+
+    return r2d2Speaks(code)
+
 }
 
 let code = [0, 1, 1, 0];
