@@ -8,9 +8,18 @@
     console.log(evenNumberRange(2, 0)); // prints []
 */
 
-function evenNumberRange(num1, num2) {
-
+function evenNumberRange(num1, num2, finalArr = []) {
+    for (let i = num1; i <= num2; i++){
+        if (i % 2 === 0){
+            finalArr.push(i)
+        }
+    }
+    return finalArr
 }
+
+console.log(evenNumberRange(-3, 2)); // prints [-2, 0, 2]
+console.log(evenNumberRange(22, 25)); // prints [22, 24]
+console.log(evenNumberRange(2, 0)); // prints []
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
     module.exports = evenNumberRange;
