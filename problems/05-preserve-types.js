@@ -25,9 +25,21 @@ console.log(preserveFunc2('boolean', 'string', 'undefined')); // prints [ undefi
 
 */
 
-function preserveTypes(array) {
-    
-}
+    function preserveTypes(array) {
+
+        return function(){
+            let arr = Array.from(arguments)//
+             let final = [];
+             for(i = 0; i < array.length; i ++){
+                let place = array[i];
+                   if(arr.includes(typeof place)){
+                    final.push(place)
+                }
+            }
+            return final;
+        }
+    };
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

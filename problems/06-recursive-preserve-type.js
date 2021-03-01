@@ -26,10 +26,50 @@ Note: the mocha tests do not test that your solution is implemented recursively.
 However, for bonus points try to solve it both with recursion and iteration.
 */
 
-function recursivePreserveType(array) {
-    
+// function recursivePreserveType(array, finalArr = []) {
+//     return function func(type, copy = array.slice(0)){
+//         if (copy.length === 0){
+//             return finalArr
+//         }
+
+//         let first = copy.shift()
+        
+//             if(typeof first === type){
+//                 finalArr.push(first)
+//             }
+
+//         return func(type, copy)
+//     }
+// }
+
+const recursivePreserveType = (array) => {
+    let newArr = array.slice()
+    let helper = (type, res = []) => {
+
+        if (newArr.length === 0) {
+            newArr = array.slice()
+            return res;
+        }
+
+        let el = newArr.shift()
+        if (typeof(el) === type) {
+            res.push(el)
+        }
+
+        helper(type, res)
+        return res
+    }
+    return helper
 }
 
+const preserveFunc = recursivePreserveType([1, 'one', 2, 'two', 3, 'three']);
+console.log(preserveFunc('number')); // prints [1, 2, 3]
+console.log(preserveFunc('string')); // prints ['one', 'two', 'three']
+
+const preserveFunc2 = recursivePreserveType([2, undefined, 'world', { color: 'red' }, true, 3, [4, 5], 'hello', false]);
+console.log(preserveFunc2('number')); // prints [2, 3]
+console.log(preserveFunc2('object')); // prints [ { color: 'red' }, [4, 5] ]
+console.log(preserveFunc2('boolean')); // prints [ true, false ]
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
     module.exports = recursivePreserveType;
