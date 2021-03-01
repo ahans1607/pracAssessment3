@@ -17,7 +17,13 @@
 */
 
 function dynamicSlice(start, end) {
-    
+    return function slicer(array){
+        if (start < 0){
+            start = 0
+        }
+        
+        return array.slice(start, end)
+    }
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/

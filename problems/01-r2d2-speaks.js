@@ -37,13 +37,15 @@ function r2d2Speaks(code){
     let first = code.shift()
 
     if (first === 0){
-     console.log("beep")
-     setTimeout(() => {}, 400);
+     setTimeout(() => {
+        console.log("beep")
+     }, 400);
     }
         
     if (first === 1){
-    console.log("boop")
-    setTimeout(() => {}, 800);
+    setTimeout(() => {
+        console.log("boop")
+    }, 800);
     }
 
     return r2d2Speaks(code)
